@@ -4,14 +4,11 @@ import 'package:task2_dial_phone_app/task2/Dial_Page/Dial_main_Page.dart';
 
 import '../Contacts Page/Contacts_main_Page.dart';
 
-class ROW extends StatefulWidget {
-  const ROW({Key? key}) : super(key: key);
+class ROW extends StatelessWidget {
 
-  @override
-  State<ROW> createState() => _ROWState();
-}
+  const ROW({Key? key, required this.set1}) : super(key: key);
+  final Function set1;
 
-class _ROWState extends State<ROW> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,12 +23,12 @@ class _ROWState extends State<ROW> {
                 size: 35,
               ),
               onPressed: () {
-                setState(() {
+
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => Contacts_Page()),
                   );
-                });
+
               },
             ),
             Container(
@@ -40,7 +37,7 @@ class _ROWState extends State<ROW> {
               decoration: const BoxDecoration(
                   color: Color.fromRGBO(6, 223, 120, 1),
                   borderRadius:
-                      BorderRadiusDirectional.all(Radius.elliptical(30, 30))),
+                  BorderRadiusDirectional.all(Radius.elliptical(30, 30))),
               child: IconButton(
                 color: Colors.white,
                 icon: const Icon(
@@ -50,16 +47,21 @@ class _ROWState extends State<ROW> {
                 onPressed: () {},
               ),
             ),
-            IconButton(
-              icon: const Icon(
-                Icons.backspace_outlined,
-                size: 35,
-              ),
-              onPressed: () {
-                setState(() {
-                  number = number.substring(0, number.length - 1);
-                });
+            GestureDetector(
+              onTap: (){
               },
+              child: IconButton(
+                icon:  const Icon(
+                  Icons.backspace_outlined,
+                  size: 35,
+                ),
+                onPressed: () {
+                  set1();
+
+                    number = number.substring(0, number.length - 1);
+
+                },
+              ),
             ),
           ],
         ),
@@ -67,3 +69,4 @@ class _ROWState extends State<ROW> {
     );
   }
 }
+

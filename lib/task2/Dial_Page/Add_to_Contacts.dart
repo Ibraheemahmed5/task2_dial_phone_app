@@ -1,18 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 import 'Dial_main_Page.dart';
 
-class Add_contacts extends StatefulWidget {
-  const Add_contacts({
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  State<Add_contacts> createState() => _Add_contactsState();
-}
-
-class _Add_contactsState extends State<Add_contacts> {
+class Add_contacts extends StatelessWidget {
+  const Add_contacts({Key? key, required this.set}) : super(key: key);
+  final Function set;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -23,17 +17,29 @@ class _Add_contactsState extends State<Add_contacts> {
           children: [
             TextButton.icon(
               onPressed: () {
-                setState(() {
-                  if (number.length >= 11) {
-                    contacts.add(number);
-                    name.add("NEW Contacts ${name.length + 1} ");
-                    print(
-                        "NEW Contacts ${name.length + 1} At number ${number}");
-                    number = "";
-                  } else {
-                    print("The number is short");
-                  }
-                });
+                set();
+
+                if (number.length >= 11) {
+                  contacts.add(number);
+                  Alert(
+                    context: context,
+                    type: AlertType.success,
+                    title: "successful Add NEW Contacts",
+                  ).show();
+
+
+                  print("NEW Contacts ${name.length + 1} At number ${number}");
+                  name.add("NEW Contacts ${name.length + 1} ");
+                  number = "";
+                } else {
+                  print("The numbers are ${number.length} is short ");
+                  Alert(
+
+                    context: context,
+                    type: AlertType.warning,
+                    title: "The numbers are short ",
+                  ).show();
+                }
               },
               icon: const Icon(
                 Icons.add,

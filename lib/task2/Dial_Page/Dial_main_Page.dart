@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'Add_to_Contacts.dart';
 import 'Models/set_of_number.dart';
 import 'Row_of_icons.dart';
@@ -27,18 +26,9 @@ List<String> contacts = [
 
 class _Dial_pageState extends State<Dial_page> {
   @override
-  set1() {
-    setState(() {});
-    return _Dial_pageState;
-  }
-
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        setState(() {
-          set1();
-        });
-      },
+      onTap: () {},
       child: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -60,9 +50,19 @@ class _Dial_pageState extends State<Dial_page> {
                     ],
                   ),
                 ),
-                const Add_contacts(),
-                Set_OF_NUMBER(),
-                ROW(),
+                 Add_contacts( set: () {
+                  setState(() {});
+                },),
+                Set_OF_NUMBER(
+                  set: () {
+                    setState(() {});
+                  },
+                ),
+                ROW(
+                  set1: () {
+                    setState(() {});
+                  },
+                ),
               ],
             ),
           ),
