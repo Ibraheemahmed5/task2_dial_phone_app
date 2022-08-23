@@ -24,9 +24,12 @@ class Add_contacts extends StatelessWidget {
                   Alert(
                     context: context,
                     type: AlertType.success,
+                    style: const AlertStyle(
+                        isCloseButton: false,
+                        animationType: AnimationType.shrink,
+                        animationDuration: Duration(milliseconds: 300)),
                     title: "successful Add NEW Contacts",
                   ).show();
-
 
                   print("NEW Contacts ${name.length + 1} At number ${number}");
                   name.add("NEW Contacts ${name.length + 1} ");
@@ -34,8 +37,11 @@ class Add_contacts extends StatelessWidget {
                 } else {
                   print("The numbers are ${number.length} is short ");
                   Alert(
-
                     context: context,
+                    style: const AlertStyle(
+                        isCloseButton: false,
+                        animationType: AnimationType.shrink,
+                        animationDuration: Duration(milliseconds: 300)),
                     type: AlertType.warning,
                     title: "The numbers are short ",
                   ).show();
